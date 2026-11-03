@@ -78,11 +78,11 @@ else{
  setTimeout(offerStay,8000);
 }
 const monologue=document.querySelector('#monologue');
-const profile={nickname:'iwakura',name:'',description:'пытаюсь изучить прогинг.\nнемножко знаю терминал и пайтон.\nстрадаю хуйней.',discordId:'1420459390665883790',discordUsername:'hyprlandenjoyer',telegramUsername:'drainingsad'};
+const profile={nickname:'iwakura',name:'',description:'пытаюсь изучить прогинг.\nнемножко знаю терминал и пайтон.\n\nстрадаю хуйней.',discordId:'1420459390665883790',discordUsername:'hyprlandenjoyer',telegramUsername:'drainingsad'};
 const thoughts=[
  ['как тебя называть?',profile.nickname],
  ...(profile.name?[['а имя?',profile.name]]:[]),
- ...(profile.description?[['что расскажешь о себе?',profile.description]]:[]),
+ ...profile.description.split('\n\n').filter(Boolean).map((text,index)=>[index===0?'что расскажешь о себе?':'а ещё?',text]),
  ['а прямо сейчас?','…']
 ];
 const activityIndex=thoughts.length-1;
